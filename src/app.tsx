@@ -47,6 +47,7 @@ function CarouselItem({slide}: CarouselItemProps) {
   );
 }
 
+// @ts-ignore
 function Carousel({slides}: CarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -143,7 +144,7 @@ export function App() {
           <Post content={content} index={i} likes={postLikes[i]} caption={postCaptions[i]}></Post>
         ))}
       </div>
-      <Carousel slides={postContent[0]}></Carousel>
+      {/* <Carousel slides={postContent[0]}></Carousel> */}
     </div>
   );
 }
