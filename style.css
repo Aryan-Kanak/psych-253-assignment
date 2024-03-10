@@ -166,7 +166,8 @@ h3 {
     position: relative;
     margin: 0 auto;
     overflow: hidden;
-    max-width: 900px;
+    width: 500px;
+    height: 500px;
 }
 
 .carouselInner {
@@ -176,7 +177,14 @@ h3 {
 
 .carouselItem {
     display: inline-block;
-    width: 100%;
+    background-color: black;
+}
+
+.carouselItemContent {
+    box-sizing: border-box;
+    width: 500px;
+    height: 500px;
+    margin: 0px;
 }
 
 .carouselControl {

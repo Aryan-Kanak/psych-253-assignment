@@ -41,8 +41,8 @@ function CarouselControls({prev, next}) {
 function CarouselItem({slide}: CarouselItemProps) {
   return (
     <div class="carouselItem">
-      {slide.type == "photo" && <img src={slide.path}></img>}
-      {slide.type != "photo" && <video autoplay muted><source src={slide.path}></source></video>}
+      {slide.type == "photo" && <img src={slide.path} class="carouselItemContent"></img>}
+      {slide.type != "photo" && <video autoplay muted class="carouselItemContent"><source src={slide.path}></source></video>}
     </div>
   );
 }
@@ -90,8 +90,7 @@ function Post({content, index, likes, caption}: PostProps) {
   return (
     <div id={"post" + index} class="post">
       <button class="closeButton" onClick={() => {let post = document.getElementById(`post${index}`); post!.style.display = "none"}}>X</button>
-      {content[0].type == "photo" && <img src={content[0].path} class="content"></img>}
-      {content[0].type != "photo" && <video class="content" autoplay muted loop><source src={content[0].path}></source></video>}
+      <Carousel slides={content}></Carousel>
       <div class="postInfo">
         <div>
           <img src="images/heart.jpg" class="icon"></img>
@@ -144,7 +143,6 @@ export function App() {
           <Post content={content} index={i} likes={postLikes[i]} caption={postCaptions[i]}></Post>
         ))}
       </div>
-      {/* <Carousel slides={postContent[0]}></Carousel> */}
     </div>
   );
 }
