@@ -1,12 +1,12 @@
 {
   "name": "psych-253-group-assignment",
-  "homepage": "https://aryan-kanak.github.io/psych-253-assignment",
+  "homepage": ".",
   "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d docs",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
