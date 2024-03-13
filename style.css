@@ -206,3 +206,26 @@ h3 {
 .right {
     right: 0;
 }
+
+.carouselIndicators {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 1.5em;
+    z-index: 2;
+}
+
+.carouselIndicatorItem {
+    width: 15px;
+    height: 15px;
+    border: none;
+    background: #FFF;
+    opacity: 0.5;
+    margin: 0.2em;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.active {
+    opacity: 1;
+}

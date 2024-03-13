@@ -8,6 +8,13 @@ type Media = {
   type: string;
 }
 
+type CarouselIndicatorsProps = {
+  number: number,
+  current: number,
+  //@ts-ignore
+  switchIndex
+}
+
 type CarouselItemProps = {
   slide: Media;
 }
@@ -26,6 +33,16 @@ type PostProps = {
   index: number;
   likes: number;
   caption: string
+}
+
+function CarouselIndicators({number, current, switchIndex}: CarouselIndicatorsProps) {
+  return (
+    <div class="carouselIndicators">
+      {[...Array(number)].map((_, i) => (
+        <button class={`carouselIndicatorItem${current === i ? ' active' : ''}`} onClick={() => switchIndex(i)}></button>
+      ))}
+    </div>
+  );
 }
 
 // @ts-ignore
@@ -61,6 +78,10 @@ function Carousel({slides}: CarouselProps) {
     setCurrentSlide(index);
   };
 
+  const switchIndex = (index: number) => {
+    setCurrentSlide(index);
+  }
+
   return (
     <div class="carousel">
       <div class="carouselInner" style={{transform: `translateX(${-currentSlide * 100}%)`}}>
@@ -70,6 +91,7 @@ function Carousel({slides}: CarouselProps) {
           ))
         }
       </div>
+      {slides.length > 1 && <CarouselIndicators number={slides.length} current={currentSlide} switchIndex={switchIndex}></CarouselIndicators>}
       <CarouselControls prev={prev} next={next}></CarouselControls>
     </div>
   );
