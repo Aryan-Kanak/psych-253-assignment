@@ -88,6 +88,7 @@ h3 {
 }
 
 .postThumbnail {
+    position: relative;
     box-sizing: border-box;
     width: 182px;
     height: 182px;
@@ -101,6 +102,15 @@ h3 {
     box-sizing: border-box;
     width: 178px;
     height: 178px;
+}
+
+.postIcon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    z-index: 20;
 }
 
 .post {

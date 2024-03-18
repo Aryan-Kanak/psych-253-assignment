@@ -104,6 +104,8 @@ function PostThumbnail({content, index}: PostThumbnailProps) {
     <div class="postThumbnail">
       {content[0].type == "photo" && <img src={content[0].path} class="thumbnail" onClick={onClick}></img>}
       {content[0].type != "photo" && <video class="thumbnail" preload="metadata" src={content[0].path} onClick={onClick}></video>}
+      {content.length > 1 && <img src={"images/multi-post.webp"} class="postIcon"></img>}
+      {content.length == 1 && content[0].type != "photo" && <img src={"images/reels-icon.png"} class="postIcon"></img>}
     </div>
   );
 }
