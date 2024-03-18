@@ -46,11 +46,11 @@ function CarouselIndicators({number, current, switchIndex}: CarouselIndicatorsPr
 }
 
 // @ts-ignore
-function CarouselControls({prev, next}) {
+function CarouselControls({prev, next, index, slides}) {
   return (
     <div>
-      <button class="carouselControl left" onClick={prev}>&lt;</button>
-      <button class="carouselControl right" onClick={next}>&gt;</button>
+      {index > 0 && <button class="carouselControl left" onClick={prev}>&lt;</button>}
+      {index < slides - 1 && <button class="carouselControl right" onClick={next}>&gt;</button>}
     </div>
   );
 }
@@ -92,7 +92,7 @@ function Carousel({slides}: CarouselProps) {
         }
       </div>
       {slides.length > 1 && <CarouselIndicators number={slides.length} current={currentSlide} switchIndex={switchIndex}></CarouselIndicators>}
-      <CarouselControls prev={prev} next={next}></CarouselControls>
+      <CarouselControls prev={prev} next={next} index={currentSlide} slides={slides.length}></CarouselControls>
     </div>
   );
 } 
