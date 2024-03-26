@@ -169,6 +169,8 @@ h3 {
 }
 
 .caption {
+    max-height: 200px;
+    overflow: auto;
     font-family: 'Open Sans', sans-serif;
 }
 

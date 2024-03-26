@@ -59,7 +59,7 @@ function CarouselItem({slide}: CarouselItemProps) {
   return (
     <div class="carouselItem">
       {slide.type == "photo" && <img src={slide.path} class="carouselItemContent"></img>}
-      {slide.type != "photo" && <video autoplay muted class="carouselItemContent"><source src={slide.path}></source></video>}
+      {slide.type != "photo" && <video autoplay muted class="carouselItemContent"><source src={slide.path} type={slide.type}></source></video>}
     </div>
   );
 }
@@ -121,7 +121,7 @@ function Post({content, index, likes, caption}: PostProps) {
           <img src="images/comment.png" class="icon"></img>
         </div>
         <div class="likes">{likes} likes</div>
-        <div class="caption">{caption}</div>
+        <div class="caption" dangerouslySetInnerHTML={{ __html: caption}}></div>
       </div>
     </div>
   );
@@ -129,16 +129,32 @@ function Post({content, index, likes, caption}: PostProps) {
 
 export function App() {
   let postContent: Media[][] = [
-    [{"path": "posts/quack.png", "type": "photo"}, {"path": "posts/stock.mp4", "type": "video/mp4"}],
-    [{"path": "posts/stock.mp4", "type": "video/mp4"}]
+    [{"path": "posts/availability-heuristic/1.png", "type": "photo"}, {"path": "posts/availability-heuristic/2.png", "type": "photo"},
+    {"path": "posts/availability-heuristic/3.png", "type": "photo"}, {"path": "posts/availability-heuristic/4.PNG", "type": "photo"},
+    {"path": "posts/availability-heuristic/5.png", "type": "photo"}, {"path": "posts/availability-heuristic/6.png", "type": "photo"}],
+    [{"path": "posts/messaging-post-1/1.png", "type": "photo"}],
+    [{"path": "posts/messaging-post-2/1.png", "type": "photo"}],
+    [{"path": "posts/messaging-post-3/1.png", "type": "photo"}],
+    [{"path": "posts/mindfulness/1.mp4", "type": "video/mp4"}, {"path": "posts/mindfulness/2.mp4", "type": "video/mp4"}, {"path": "posts/mindfulness/3.mp4", "type": "video/mp4"}],
+    [{"path": "posts/pluralistic-ignorance/1.png", "type": "photo"}, {"path": "posts/pluralistic-ignorance/2.png", "type": "photo"},
+    {"path": "posts/pluralistic-ignorance/3.png", "type": "photo"}, {"path": "posts/pluralistic-ignorance/4.png", "type": "photo"},
+    {"path": "posts/pluralistic-ignorance/5.png", "type": "photo"}, {"path": "posts/pluralistic-ignorance/6.png", "type": "photo"},
+    {"path": "posts/pluralistic-ignorance/7.png", "type": "photo"}, {"path": "posts/pluralistic-ignorance/8.png", "type": "photo"}],
+    [{"path": "posts/text-video/1.mp4", "type": "video/mp4"}]
   ];
 
   let postLikes: number[] = [
-    123, 45
+    100, 100, 100, 100, 100, 100, 100, 0
   ];
 
   let postCaptions: string[] = [
-    "This is a caption", "This is another caption"
+    "caption",
+    "In this scenario, someone is being invited to a St. Patrick's Day party with friends, in which alcohol is involved. While sometimes these events can be fun when enjoyed in a safe manner, the person seems hesitant to go.<br><br>Pluralistic ignorance is a phenomenon in social psychology in which a person may say or behave in a way that contradicts what they actually believe, because they overestimate the number of people who endorse these behaviours.<br><br>Social media can even enhance this, as we are subject to seeing everyone else's idea of a good time (or so we think).<br><br>Based on this situation, what do you think? Is this person displaying pluralistic ignorance, and were they convinced to go on the basis of having content to post on their social media? ",
+    "Going back to the idea of pluralistic ignorance, this is definitely a more problematic form of this idea. Not only does social media appear to endorse some dangerous behaviours, these online challenges spread quickly to others and encourage them to participate (Falgoust et al., 2022).<br><br>Let's take a second to reflect. Why exactly do we think that everyone enjoys these social media challenges? Is it solely for the popularity and numbers in likes and follows, in a way that boosts our self esteem through gratification? Even if it does boost self-esteem in some ways, there are always dislikes and hate comments that target the subject. The gains in numbers might not even be in our best interests…do you actually have a positive and/or personal connection with each and every like and follow?<br><br>Before you even hit post next time, think about the repercussions of your actions; not even solely to preserve your own self-esteem and self-worth, but also in the interests of others in this endless cycle of social media challenges.",
+    "We're dealing with a conversation between people who are aware of an individual who died attempting this online challenge. Knowing this information, one person seems hesitant to proceed, but the other person coaxes them into it by saying other people haven't had issues with the challenge.<br><br>This not only displays pluralistic ignorance, but also the idea of confirmation bias in psychology. Confirmation bias occurs on an individual basis, when there is a tendency towards favouring incoming information that confirms one's existing knowledge and beliefs.<br><br>Here, the individual is basing their belief (that nothing will go wrong doing the Blackout Challenge) by recalling only the posts where no long term harm was done, and ignoring examples such as news where an individual ended up passing away. This phenomenon creates a huge potential for the spread of misinformation. In this context, they are misinformed about the actual risks that come from this challenge, by actively seeking out more examples that support that they could even gain fame from attempting this challenge. <br><br>Do you think you have fallen victim to this bias? The thing is, everyone is subjected to bias. However, it's more about how we deal with it. The problem is, social media often reinforces confirmation bias, by producing targeted ads and posts. We should all make an attempt to reduce our confirmation bias, by being more open to new information that might oppose our current knowledge and beliefs even if it makes us uncomfortable!",
+    "caption",
+    "caption",
+    "caption"
   ];
 
   return (
@@ -148,10 +164,10 @@ export function App() {
         <div id="profileInfoContainer">
           <div id="profileInfo">
             <div id="usernameContainer">
-              <h1>@username</h1>
+              <h1>@milgramsmaniacs</h1>
               <img src="images/checkmark.png" id="checkmark"></img>
             </div>
-            <h2># posts &nbsp;&nbsp; # followers &nbsp;&nbsp; # following</h2>
+            <h2>{postContent.length} posts &nbsp;&nbsp; 🤷‍♂️ followers &nbsp;&nbsp; 🤷‍♂️ following</h2>
             <h3>Aryan, Carol, Kalista, Nyden</h3>
             <h3>Bio</h3>
           </div>
