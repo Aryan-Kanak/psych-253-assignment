@@ -120,7 +120,7 @@ function Post({content, index, likes, caption}: PostProps) {
           <img src="images/heart.jpg" class="icon"></img>
           <img src="images/comment.png" class="icon"></img>
         </div>
-        <div class="likes">{likes} likes</div>
+        {/* <div class="likes">{likes} likes</div> */}
         <div class="caption" dangerouslySetInnerHTML={{ __html: caption}}></div>
       </div>
     </div>
@@ -129,6 +129,7 @@ function Post({content, index, likes, caption}: PostProps) {
 
 export function App() {
   let postContent: Media[][] = [
+    [{"path": "images/milgram.jpg", "type": "photo"}],
     [{"path": "posts/availability-heuristic/1.png", "type": "photo"}, {"path": "posts/availability-heuristic/2.png", "type": "photo"},
     {"path": "posts/availability-heuristic/3.png", "type": "photo"}, {"path": "posts/availability-heuristic/4.PNG", "type": "photo"},
     {"path": "posts/availability-heuristic/5.png", "type": "photo"}, {"path": "posts/availability-heuristic/6.png", "type": "photo"}],
@@ -144,10 +145,11 @@ export function App() {
   ];
 
   let postLikes: number[] = [
-    100, 100, 100, 100, 100, 100, 100, 0
+    0, 100, 100, 100, 100, 100, 100, 100, 0
   ];
 
   let postCaptions: string[] = [
+    "Welcome to our group project! We are @milgramsmaniacs and our account is set up to inform you about ways to use social media constructively.<br><br>This first post is just a little guide to outline our project. We have content in the form of graphics and videos, where the main goal is to inform you all about a little social psychology, while also offering suggestions about how you can use social media in a healthier manner. Lots of these are designed as little scenarios and “expectations versus reality” circumstances to really get you to reflect on certain psychological content and how it relates to social media usage. <br><br>Some of the main concepts we focus on are: <br><br>- Pluralistic ignorance: how social media encourages our overestimation of how many people enjoy behaviours that may be harmful, such as dangerous social media challenges and drinking/drugs<br><br>- Peer pressuring: we may feel more inclined to participate in certain activities, given pluralistic ignorance <br><br>- Confirmation bias: how social media reinforces our pre-existing beliefs and biases<br><br>- Self-esteem/self-worth: how social media can lower our self-esteem, as we tend to make upward comparisons to others<br><br>- Availability heuristics and correspondence bias: related to self-esteem, we tend to make comparisons of our lives to others and start feeling badly about our social circle or achievements based on what we see on social media <br><br>Aside from the negatives of social media, we also highlight some ways to use the internet positively. If you notice on our website, we have omitted the follower and like counts, as this could cause some distress on regular social media accounts. We've also included posts on mental health checklists and suggestions of healthy activities aside from social media. <br><br>We hope you enjoy some healthy doom-scrolling through our account!",
     "caption",
     "In this scenario, someone is being invited to a St. Patrick's Day party with friends, in which alcohol is involved. While sometimes these events can be fun when enjoyed in a safe manner, the person seems hesitant to go.<br><br>Pluralistic ignorance is a phenomenon in social psychology in which a person may say or behave in a way that contradicts what they actually believe, because they overestimate the number of people who endorse these behaviours.<br><br>Social media can even enhance this, as we are subject to seeing everyone else's idea of a good time (or so we think).<br><br>Based on this situation, what do you think? Is this person displaying pluralistic ignorance, and were they convinced to go on the basis of having content to post on their social media? ",
     "Going back to the idea of pluralistic ignorance, this is definitely a more problematic form of this idea. Not only does social media appear to endorse some dangerous behaviours, these online challenges spread quickly to others and encourage them to participate (Falgoust et al., 2022).<br><br>Let's take a second to reflect. Why exactly do we think that everyone enjoys these social media challenges? Is it solely for the popularity and numbers in likes and follows, in a way that boosts our self esteem through gratification? Even if it does boost self-esteem in some ways, there are always dislikes and hate comments that target the subject. The gains in numbers might not even be in our best interests…do you actually have a positive and/or personal connection with each and every like and follow?<br><br>Before you even hit post next time, think about the repercussions of your actions; not even solely to preserve your own self-esteem and self-worth, but also in the interests of others in this endless cycle of social media challenges.",
@@ -160,7 +162,7 @@ export function App() {
   return (
     <div id="main">
       <div id="profile">
-        <img src="images/photo.jpg" id="profilePhoto"></img>
+        <img src="images/milgram.jpg" id="profilePhoto"></img>
         <div id="profileInfoContainer">
           <div id="profileInfo">
             <div id="usernameContainer">
@@ -169,7 +171,7 @@ export function App() {
             </div>
             <h2>{postContent.length} posts &nbsp;&nbsp; 🤷‍♂️ followers &nbsp;&nbsp; 🤷‍♂️ following</h2>
             <h3>Aryan, Carol, Kalista, Nyden</h3>
-            <h3>Bio</h3>
+            <h3>Using social psychology concepts to foster healthy social media use</h3>
           </div>
         </div>
       </div>
@@ -180,7 +182,7 @@ export function App() {
       </div>
       <div id="posts">
         {postContent.map((content, i) => (
-          <Post content={content} index={i} likes={postLikes[i]} caption={postCaptions[i]}></Post>
+          <Post content={content} index={i} likes={0} caption={postCaptions[i]}></Post>
         ))}
       </div>
     </div>
