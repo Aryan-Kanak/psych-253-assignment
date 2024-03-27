@@ -31,7 +31,6 @@ type PostThumbnailProps = {
 type PostProps = {
   content: Media[];
   index: number;
-  likes: number;
   caption: string
 }
 
@@ -110,7 +109,7 @@ function PostThumbnail({content, index}: PostThumbnailProps) {
   );
 }
 
-function Post({content, index, likes, caption}: PostProps) {
+function Post({content, index, caption}: PostProps) {
   return (
     <div id={"post" + index} class="post">
       <button class="closeButton" onClick={() => {let post = document.getElementById(`post${index}`); post!.style.display = "none"}}>X</button>
@@ -142,10 +141,6 @@ export function App() {
     {"path": "posts/pluralistic-ignorance/5.png", "type": "photo"}, {"path": "posts/pluralistic-ignorance/6.png", "type": "photo"},
     {"path": "posts/pluralistic-ignorance/7.png", "type": "photo"}, {"path": "posts/pluralistic-ignorance/8.png", "type": "photo"}],
     [{"path": "posts/text-video/1.mp4", "type": "video/mp4"}]
-  ];
-
-  let postLikes: number[] = [
-    0, 100, 100, 100, 100, 100, 100, 100, 0
   ];
 
   let postCaptions: string[] = [
@@ -182,7 +177,7 @@ export function App() {
       </div>
       <div id="posts">
         {postContent.map((content, i) => (
-          <Post content={content} index={i} likes={0} caption={postCaptions[i]}></Post>
+          <Post content={content} index={i} caption={postCaptions[i]}></Post>
         ))}
       </div>
     </div>
